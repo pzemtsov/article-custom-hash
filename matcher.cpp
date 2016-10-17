@@ -371,8 +371,7 @@ class CustomPortableHashMatcher : public Matcher
 
     inline uint32_t hash (uint32_t v) const
     {
-        return (v * 239012) >> 28;
-//        return (v * 93564) >> 28;
+        return (v * 93564) >> 28;
     }
 
     bool match (const char * p) const
@@ -389,8 +388,7 @@ class CustomPortableHashMatcher : public Matcher
         memcpy (&v, p, sizeof (v));
         v = ntohl (v);
         uint32_t h = hash (v);
-        printf ("%c%c%c%c: %d\n", v>>24, v>>16,v>>8,v, h);
-        if (values [h]) printf ("Jopa\n");// exit (1);
+        if (values [h]) exit (1);
         values [h] = v;
     }
 
