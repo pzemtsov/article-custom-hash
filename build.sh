@@ -1,1 +1,1 @@
-c++ -O3 -mavx -falign-functions=32 -falign-loops=32 -o matcher matcher.cpp
+c++ -std=gnu++11 -O3 -mavx -falign-functions=32 -falign-loops=32 -Wno-multichar -o matcher matcher.cpp
