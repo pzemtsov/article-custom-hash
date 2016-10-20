@@ -266,7 +266,7 @@ class SSEMatcher : public Matcher
     bool match (const char * p) const
     {
         uint32_t v = *(const uint32_t*) p;
-        __m128i w = _mm_setr_epi32 (v, v, v, v);
+        __m128i w = _mm_set1_epi32 (v);
 
 #define CMP(x) \
         if (_mm_movemask_epi8 (_mm_cmpeq_epi32 (w, x))) return true;
@@ -285,7 +285,7 @@ class SSEMatcher2 : public Matcher
     bool match (const char * p) const
     {
         uint32_t v = *(const uint32_t*) p;
-        __m128i w = _mm_setr_epi32 (v, v, v, v);
+        __m128i w = _mm_set1_epi32 (v);
         __m128i d = _mm_setzero_si128 ();
 
 #define CMP(x) \
@@ -306,7 +306,7 @@ class AVX2Matcher : public Matcher
     bool match (const char * p) const
     {
         uint32_t v = *(const uint32_t*) p;
-        __m256i w = _mm256_setr_epi32 (v, v, v, v, v, v, v, v);
+        __m256i w = _mm256_set1_epi32 (v);
         __m256i d = _mm256_setzero_si256 ();
 
 #define CMP(x) \
